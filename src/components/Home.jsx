@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react'
 
 const Home = () => {
     const [data, setData] = useState([])
-     const [limit, setLimit] = useState(7)
-    const [pageToken, setPageToken] = useState('')
+    //  const [limit, setLimit] = useState(7)
+    // const [pageToken, setPageToken] = useState('')
 
 
 
@@ -16,7 +16,7 @@ const Home = () => {
         const newdata = await res.json();
 
         console.log(newdata)
-        setPageToken(newdata.nextPageToken || '')
+        // setPageToken(newdata.nextPageToken || '')
         setData([...data, ...newdata.items])
     }
     console.log(data)
