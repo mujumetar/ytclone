@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react'
 
+const key = import.meta.env.VITE_YOUTUBE_KEY
 
 const Home = () => {
     const [data, setData] = useState([])
-    //  const [limit, setLimit] = useState(7)
-    // const [pageToken, setPageToken] = useState('')
+     const [limit, setLimit] = useState(7)
+    const [pageToken, setPageToken] = useState('')
 
 
 
-    // let base = "https://www.googleapis.com/youtube/v3/"
-    // const key = "?key=AIzaSyCXdoMd4flqqNR-537hAnWL0hjhi2huMUI"
+    let base = "https://www.googleapis.com/youtube/v3/"
 
     const fetchData = async () => {
         const res = await fetch(base + "search" + key + `&part=snippet&maxResults=${limit}`)
         const newdata = await res.json();
 
         console.log(newdata)
-        // setPageToken(newdata.nextPageToken || '')
+        setPageToken(newdata.nextPageToken || '')
         setData([...data, ...newdata.items])
     }
     console.log(data)
