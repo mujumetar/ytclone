@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
+let key = import.meta.env.VITE_YOUTUBE_KEY
 
-const key = import.meta.env.VITE_YOUTUBE_KEY
 
 const Home = () => {
     const [data, setData] = useState([])
