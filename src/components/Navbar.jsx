@@ -1,10 +1,13 @@
 import { RiSearch2Line } from '@remixicon/react'
 import React from 'react'
 
+
 const Navbar = () => {
     return (
+        
         <div>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark flex-wrap">
+       
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark flex-wrap position-sticky top-0 start-0">
                 <a className="navbar-brand px-3" href="#">
                     <img className='img-fluid' style={{ width: "100px" }} src="https://1000logos.net/wp-content/uploads/2017/05/Youtube-Logo.png" alt="" />
                 </a>

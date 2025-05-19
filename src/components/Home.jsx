@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { vid } from './data'
+import { RiDownload2Fill, RiDownloadLine, RiMore2Fill, RiPlayList2Fill, RiShare2Line, RiShareForward2Line, RiShareForwardLine } from '@remixicon/react'
 
 
 
@@ -18,7 +19,7 @@ const Home = () => {
 
     const fetchData = async () => {
         // const res = await fetch(base + "search/key=" + key + `&part=snippet&maxResults=${limit}`)
-        const res = await fetch(`${base}search?key=${key}&part=snippet&maxResults=${limit}`)
+        // const res = await fetch(`${base}search?key=${key}&videoDuration=medium&part=snippet&maxResults=${limit}`)
         const newdata = await res.json();
 
         console.log(newdata)
@@ -27,9 +28,9 @@ const Home = () => {
     }
     console.log(data)
 
-    // useEffect(() => {
-    //     fetchData();
-    // }, [])
+    useEffect(() => {
+        fetchData();
+    }, [])
 
     console.log(vid)
     return (
@@ -38,14 +39,30 @@ const Home = () => {
             <div className="container-fluid my-3 text-white">
                 <div className="row gap-y-1.5">
                     {
-                        vid.map((ele) => (
-                            <div className= 'col-lg-3 col-md-6 col-sm-12'>
-                                {/* <iframe width="100%" height="400px" className='rounded-4' allowFullScreen src={`https://www.youtube.com/embed/${ele.id.videoId}`}></iframe> */}
-                                <img width={ele.snippet.thumbnails.default.width} height={ele.snippet.thumbnails.default.height} className='rounded-4 border' src={`https://www.youtube.com/embed/${ele.snippet.thumbnails.default.url}`} alt={ele.snippet.thumbnails.default.url}></img>
-<h6 className='my-0'>{ele.snippet.title}</h6>
-<p>{ele.snippet.channelTitle}</p>
-                                {/* <img src={} alt="" /> */}
+                        data.map((ele) => (
+                            <div className='col-lg-3 col-md-6 col-sm-12'>
+                                {/* <iframe width={`{ele.snippet.thumbnails.high.width}px`} height={`{ele.snippet.thumbnails.high.height}px`} className='rounded-4' allowFullScreen src={`https://www.youtube.com/embed/${ele.id.videoId}`}></iframe> */}
+                                <img width={`{ele.snippet.thumbnails.high.width}px`} height={`{ele.snippet.thumbnails.high.height}px`} className='rounded-4 img-fluid' src={`${ele.snippet.thumbnails.high.url}`} alt={ele.snippet.thumbnails.default.url}></img>
+
+
+                                <div className="vid-footer d-flex justify-content-between my-2">
+                                    <div className="disc">
+                                        <h6 className='mt-2 mb-1 mx-1'>{ele.snippet.title}</h6>
+                                        <p className='mx-1'>{ele.snippet.channelTitle}</p>
+                                    </div>
+                                    <div className="drop-down">
+                                        <RiMore2Fill id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" />
+                                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-start my-1" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#"><RiPlayList2Fill className='bg-transparent' /> Add to queue</a></li>
+                                            <li><a class="dropdown-item" href="#"><RiDownloadLine className='bg-transparent' /> Download</a></li>
+                                            <li><a class="dropdown-item" href="#"><RiShareForwardLine className='bg-transparent' /> Share</a></li>
+                                        </ul>
+                                    </div>
+
+                                    {/* <img src={} alt="" /> */}
+                                </div>
                             </div>
+
                         ))
                     }
 
@@ -53,7 +70,7 @@ const Home = () => {
             </div>
             {/*  ele.snippet.thumbnails.default.url*/}
 
-        </div>
+        </div >
     )
 }
 

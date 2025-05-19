@@ -6,13 +6,11 @@ import Navbar from "./components/Navbar";
 import Videos from './components/Videos';
 
 function App() {
-
-
   return (
     <>
       <Canvas />
-      <Navbar/>
-      <Home/>
+      <Navbar />
+      <Home />
       {/* <Videos/> */}
     </>
   )
