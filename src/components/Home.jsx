@@ -19,7 +19,7 @@ const Home = () => {
 
     const fetchData = async () => {
         // const res = await fetch(base + "search/key=" + key + `&part=snippet&maxResults=${limit}`)
-        // const res = await fetch(`${base}search?key=${key}&videoDuration=medium&part=snippet&maxResults=${limit}`)
+        const res = await fetch(`${base}search?key=${key}&videoDuration=medium&part=snippet&maxResults=${limit}`)
         const newdata = await res.json();
 
         console.log(newdata)
@@ -28,9 +28,9 @@ const Home = () => {
     }
     console.log(data)
 
-    useEffect(() => {
-        fetchData();
-    }, [])
+    // useEffect(() => {
+    //     fetchData();
+    // }, [])
 
     console.log(vid)
     return (
@@ -39,7 +39,7 @@ const Home = () => {
             <div className="container-fluid my-3 text-white">
                 <div className="row gap-y-1.5">
                     {
-                        data.map((ele) => (
+                        vid.map((ele) => (
                             <div className='col-lg-3 col-md-6 col-sm-12'>
                                 {/* <iframe width={`{ele.snippet.thumbnails.high.width}px`} height={`{ele.snippet.thumbnails.high.height}px`} className='rounded-4' allowFullScreen src={`https://www.youtube.com/embed/${ele.id.videoId}`}></iframe> */}
                                 <img width={`{ele.snippet.thumbnails.high.width}px`} height={`{ele.snippet.thumbnails.high.height}px`} className='rounded-4 img-fluid' src={`${ele.snippet.thumbnails.high.url}`} alt={ele.snippet.thumbnails.default.url}></img>
