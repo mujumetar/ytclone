@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { vid } from './data'
 import { RiDownload2Fill, RiDownloadLine, RiMore2Fill, RiPlayList2Fill, RiShare2Line, RiShareForward2Line, RiShareForwardLine } from '@remixicon/react'
 
-
-
 let key = import.meta.env.VITE_YOUTUBE_KEY
 // let key = import.meta.env.VITE_YOUTUBE_KEY2
 
@@ -42,7 +40,7 @@ const Home = () => {
                         vid.map((ele) => (
                             <div className='col-lg-3 col-md-6 col-sm-12'>
                                 {/* <iframe width={`{ele.snippet.thumbnails.high.width}px`} height={`{ele.snippet.thumbnails.high.height}px`} className='rounded-4' allowFullScreen src={`https://www.youtube.com/embed/${ele.id.videoId}`}></iframe> */}
-                                <img width={`{ele.snippet.thumbnails.high.width}px`} height={`{ele.snippet.thumbnails.high.height}px`} className='rounded-4 img-fluid' src={`${ele.snippet.thumbnails.high.url}`} alt={ele.snippet.thumbnails.default.url}></img>
+                                <img width={`{ele.snippet.thumbnails.high.width} + %`} height={`{ele.snippet.thumbnails.high.height} + %`} className='rounded-4 img-fluid' src={`${ele.snippet.thumbnails.high.url}`} alt={ele.snippet.thumbnails.default.url}></img>
 
 
                                 <div className="vid-footer d-flex justify-content-between my-2">
@@ -52,10 +50,10 @@ const Home = () => {
                                     </div>
                                     <div className="drop-down">
                                         <RiMore2Fill id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" />
-                                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-start my-1" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="#"><RiPlayList2Fill className='bg-transparent' /> Add to queue</a></li>
-                                            <li><a class="dropdown-item" href="#"><RiDownloadLine className='bg-transparent' /> Download</a></li>
-                                            <li><a class="dropdown-item" href="#"><RiShareForwardLine className='bg-transparent' /> Share</a></li>
+                                        <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-start my-1" aria-labelledby="dropdownMenuButton1">
+                                            <li><a className="dropdown-item" href="#"><RiPlayList2Fill className='bg-transparent' /> Add to queue</a></li>
+                                            <li><a className="dropdown-item" href="#"><RiDownloadLine className='bg-transparent' /> Download</a></li>
+                                            <li><a className="dropdown-item" href="#"><RiShareForwardLine className='bg-transparent' /> Share</a></li>
                                         </ul>
                                     </div>
 
