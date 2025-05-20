@@ -17,7 +17,7 @@ const Home = () => {
 
     const fetchData = async () => {
         // const res = await fetch(base + "search/key=" + key + `&part=snippet&maxResults=${limit}`)
-        const res = await fetch(`${base}search?key=${key}&videoDuration=medium&part=snippet&maxResults=${limit}`)
+        const res = await fetch(`${base}search?key=${key}&part=snippet&maxResults=${limit}`)
         const newdata = await res.json();
 
         console.log(newdata)
@@ -30,7 +30,7 @@ const Home = () => {
     //     fetchData();
     // }, [])
 
-    console.log(vid)
+    // console.log(vid)
     return (
         <div>
 
