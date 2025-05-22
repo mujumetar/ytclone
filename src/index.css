@@ -35,6 +35,10 @@
   -o-border-radius: 10px;
 }
 
+.bg-yt{
+    background-color: #0f0f0f;
+}
+
 /* .offcanvas {
   width: 15% !important;
 } */
@@ -54,5 +58,11 @@
 @media (min-width: 1024px) {
   .offcanvas {
     width: 30% !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .offcanvas {
+    width: 15% !important;
   }
 }
