@@ -3,6 +3,7 @@ import {
   RiHistoryLine,
   RiHome2Fill,
   RiHome4Fill,
+  RiMore2Fill,
   RiSearch2Line,
   RiShoppingBag4Line,
   RiSignalTowerLine,
@@ -23,13 +24,16 @@ import {
   IoHelpCircleOutline,
   IoSettingsOutline,
 } from "react-icons/io5";
+import { RiMenu3Fill } from "react-icons/ri";
+import { BsThreeDotsVertical } from "react-icons/bs";
+import { BiUserCircle } from "react-icons/bi";
 
 const Canvas = () => {
   return (
     <>
-      <nav className="navbar navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-dark fixed-top">
         <div className="container-fluid d-flex justify-content-lg-start">
-          <div className="navb d-flex justify-content-between w-100 my-2">
+          <div className="navb d-flex flex-wrap justify-content-between w-100 my-2">
             <div className="left">
               <button
                 className="navbar-toggler"
@@ -50,19 +54,32 @@ const Canvas = () => {
               </a>
             </div>
 
-            <div className="d-flex mt-3" role="search">
+            <div className="d-flex flex-wrap" role="search">
               <input
-                className="form-control text-white bg-dark p-2 border border-secondary rounded-start-pill px-4 border-end-0  text-white border"
+                style={{ height: "40px" }}
+                className=" text-white bg-dark  border border-secondary rounded-start-pill px-4 border-end-0  text-white border"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
               />
               <button
-                className="btn text-white my-auto bg-transparent rounded-end-pill"
+                className="btn text-white  bg-transparent rounded-end-pill"
                 type="submit"
+                style={{ height: "40px" }}
               >
-                <RiSearch2Line />{" "}
+                <RiSearch2Line />
               </button>
+            </div>
+            <div className="d-flex mt-3 text-white" role="search">
+
+              <RiMore2Fill />
+
+              <a href="#" className="text-white text-decoration-none">
+                <div className="rounded-pill border py-1 px-2">
+                  <BiUserCircle /> Sign In
+                </div>
+              </a>
+
             </div>
           </div>
 
@@ -88,7 +105,7 @@ const Canvas = () => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="offcanvas-body z-n1">
+            <div className="offcanvas-body z-n1 ">
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <RiHome4Fill className="my-2 mx-2 yt-icons" />
@@ -99,118 +116,122 @@ const Canvas = () => {
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <SiYoutubeshorts className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Shorts
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <MdSubscriptions className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Subscription
                   </a>
                 </li>
+                <hr />
+
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <FaRegUserCircle className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    You
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <RiHistoryLine className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    History
                   </a>
                 </li>
-                <h2>Explore</h2>
+                <hr />
+
+                <h3 className="my-1 mx-2">Explore</h3>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <SiLinkfire className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Trending
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <RiShoppingBag4Line className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Shopping
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <IoIosMusicalNotes className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Music
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <MdOutlineMovieCreation className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Movies
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <HiMiniSignal className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Live
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <SiYoutubegaming className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Gaming
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <MdNewspaper className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    News
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <IoIosTrophy className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Sports
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <RiGraduationCapLine className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Courses
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <PiCoatHangerBold className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Fashion & Beauty
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <RiSignalTowerLine className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Podcast
                   </a>
                 </li>
                 <hr />
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <IoSettingsOutline className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Setting
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <IoFlagOutline className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Report History
                   </a>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <IoHelpCircleOutline className="my-2 mx-2 yt-icons" />
                   <a className="nav-link active" aria-current="page" href="#">
-                    Home
+                    Help
                   </a>
                 </li>
               </ul>
             </div>
           </div>
         </div>
-      </nav>
+      </nav >
     </>
   );
 };
