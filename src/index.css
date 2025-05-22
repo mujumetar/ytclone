@@ -35,23 +35,23 @@
   -o-border-radius: 10px;
 }
 
-.offcanvas {
+/* .offcanvas {
   width: 15% !important;
-}
+} */
 
-@media (max-width: 425px) {
+@media (min-width: 425px) {
   .offcanvas {
     width: 100% !important;
   }
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .offcanvas {
-    width: 50% !important;
+    width: 40% !important;
   }
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 1024px) {
   .offcanvas {
     width: 30% !important;
   }
