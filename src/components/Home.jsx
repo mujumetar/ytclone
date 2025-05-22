@@ -33,8 +33,10 @@ const Home = () => {
     // console.log(vid)
     return (
         <div>
-
-            <div className="container-fluid my-3 text-white">
+<div className="my-5"></div>
+<div className="my-5">.</div>
+<div className="my-5"></div>
+            <div className="container-fluid my-3 text-white ">
                 <div className="row gap-y-1.5">
                     {
                         vid.map((ele) => (
