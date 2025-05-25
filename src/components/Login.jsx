@@ -7,7 +7,7 @@ import {
   onAuthStateChanged,
   browserLocalPersistence,
 } from "firebase/auth";
-import App from "../App";
+// import App from "../App";
 import app from "../../firebaseConfig";
 import { useEffect } from "react";
 
