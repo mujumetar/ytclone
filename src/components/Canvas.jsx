@@ -79,7 +79,6 @@ const Canvas = () => {
                   <BiUserCircle /> Sign In
                 </div>
               </a>
-
             </div>
           </div>
 

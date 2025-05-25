@@ -58,19 +58,19 @@ const Home = () => {
                                     <div className="disc">
                                         <h6 className='mt-2 mb-1 mx-1'>{ele.snippet.title}</h6>
                                         <p className='mx-1'>{ele.snippet.channelTitle}</p>
-                                        <p>{
+                                        {
                                             view.items.map((ele) => {
                                                 return (
                                                     <div className='d-flex justify-content-around'>
                                                         <p><BsEyeFill className='mx-2' />{ele.statistics.viewCount}</p>
-                                                        <p><FaThumbsUp className='mx-2' />{ele.statistics.likeCount}</p>
+                                                        {/* <p><FaThumbsUp className='mx-2' />{ele.statistics.likeCount}</p> */}
                                                     </div>
                                                 )
 
                                                 // return <p><BsEyeFill className='mx-2' />{ele.statistics.viewCount}</p>
                                                 // return <p><BsEyeFill className='mx-2' />{ele.statistics.viewCount}</p>
                                             })
-                                        }</p>
+                                        }
                                     </div>
                                     <div className="drop-down">
                                         <RiMore2Fill id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" />
