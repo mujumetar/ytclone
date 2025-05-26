@@ -11,9 +11,14 @@ import {
 import app from "../../firebaseConfig";
 import { useEffect } from "react";
 
+import { useDispatch } from "react-redux";
+import { login, logout } from "../features/authSlice";
+
+
 const Login = () => {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider(app);
+  const dispatch = useDispatch();
 
   const handleGoogles = async () => {
     let res = await signInWithPopup(auth, provider);
@@ -26,18 +31,20 @@ const Login = () => {
     setPersistence(auth, browserLocalPersistence);
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        let login = {
-          name: user.displayName,
-          email: user.email,
-          img: user.photoURL,
-        };
+        dispatch(
+          login({
+            name: user.displayName,
+            email: user.email,
+            img: user.photoURL,
+          })
+        );
       } else {
-        console.log("log-outted!!!");
+        dispatch(logout());
       }
     });
   }, [auth]);
   return (
-    <div>
+    <>
       <section className="vh-100">
         <div className="container py-5 h-100">
           <div className="row d-flex align-items-center justify-content-center h-100">
@@ -53,7 +60,7 @@ const Login = () => {
                 <div data-mdb-input-init className="form-outline mb-4">
                   <input
                     type="email"
-                    id="form1Example13"
+                    
                     className="form-control form-control-lg"
                   />
                   <label className="form-label" htmlFor="form1Example13">
@@ -64,7 +71,7 @@ const Login = () => {
                 <div data-mdb-input-init className="form-outline mb-4">
                   <input
                     type="password"
-                    id="form1Example23"
+                   
                     className="form-control form-control-lg"
                   />
                   <label className="form-label" htmlFor="form1Example23">
@@ -78,7 +85,7 @@ const Login = () => {
                       className="form-check-input"
                       type="checkbox"
                       value=""
-                      id="form1Example3"
+                      
                     />
                     <label className="form-check-label" htmlFor="form1Example3">
                       {" "}
@@ -116,7 +123,7 @@ const Login = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
