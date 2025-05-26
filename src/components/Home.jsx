@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import { vid, view } from './data'
+// import { vid, view } from './data'
 import { RiDownload2Fill, RiDownloadLine, RiMore2Fill, RiPlayList2Fill, RiShare2Line, RiShareForward2Line, RiShareForwardLine } from '@remixicon/react'
 import { BsEyeFill } from 'react-icons/bs'
 import { FaThumbsUp } from 'react-icons/fa'
+import Views from './Views'
 
-let key = import.meta.env.VITE_YOUTUBE_KEY
-// let key = import.meta.env.VITE_YOUTUBE_KEY2
+// let key = import.meta.env.VITE_YOUTUBE_KEY
+let key = import.meta.env.VITE_YOUTUBE_KEY2
 
 
 const Home = () => {
@@ -19,16 +20,32 @@ const Home = () => {
 
     const fetchData = async () => {
         // const res = await fetch(base + "search/key=" + key + `&part=snippet&maxResults=${limit}`) 
-        const res = await fetch(`${base}search?key=${key}&part=snippet&type=video&videoDuration=medium&maxResults=${limit}`) // video details
-        const newdata = await res.json();
-        const vidIds = newdata.items.map((ele) => ele.id.videoId)
-        // console.log(vidIds)
-        const veiwRes = await fetch(`${base}videos?key=${key}&part=statistics&id=${vidIds.join()}`) // view request
-        const viewCount = await veiwRes.json()
-        console.log(viewCount)
-        console.log(newdata)
-        setPageToken(newdata.nextPageToken || '')
-        setData([...data, ...newdata.items])
+
+        try {
+            const res = await fetch(`${base}search?key=${key}&part=snippet&type=video&videoDuration=medium&maxResults=${limit}&q=marvel`) // video details
+            const newdata = await res.json();
+            const vidIds = newdata.items?.map((ele) => ele.id.videoId)
+            // console.log(vidIds)
+            const veiwRes = await fetch(`${base}videos?key=${key}&part=statistics&id=${vidIds.join(',')}`) // view request
+            const viewCount = await veiwRes.json()
+    
+
+           const updateData= newdata.items.map((ele) =>{
+                const view = viewCount.items.find((el)=> ele.id.videoId == el.id)
+                if(view)
+                {
+                    ele.snippet.viewCount = view.statistics.viewCount
+                }
+                return ele;
+            })
+
+            console.log(updateData)
+            setData(updateData)
+
+
+        } catch (error) {
+            console.log(error)
+        }
 
 
 
@@ -36,11 +53,11 @@ const Home = () => {
 
     }
 
-    // useEffect(() => {
-    //     fetchData();
-    // }, [])
+    useEffect(() => {
+        fetchData();
+    }, [])
 
-    console.log(vid)
+ 
     return (
         <div>
             <div className="my-5"></div>
@@ -49,27 +66,18 @@ const Home = () => {
             <div className="container-fluid my-3 text-white ">
                 <div className="row gap-y-1.5">
                     {
-                        vid.items.map((ele) => (
-                            <div className='col-lg-3 col-md-6 col-sm-12'>
+                        data.map((ele) => (
+                            <div className='col-lg-3 col-md-6 col-sm-12 border' key={ele.id.videoId}>
                                 {/* <iframe width={`{ele.snippet.thumbnails.high.width}px`} height={`{ele.snippet.thumbnails.high.height}px`} className='rounded-4' allowFullScreen src={`https://www.youtube.com/embed/${ele.id.videoId}`}></iframe> */}
-                                <img width={`{ele.snippet.thumbnails.high.width} + %`} height={`{ele.snippet.thumbnails.high.height} + %`} className='rounded-4 img-fluid' src={`${ele.snippet.thumbnails.high.url}`} alt={ele.snippet.thumbnails.default.url}></img>
+                                <img width={`{ele.snippet.thumbnails.high.width} + %`} height={`{ele.snippet.thumbnails.high.height} + %`} className='rounded-4 border img-fluid' src={`${ele.snippet.thumbnails.high.url}`} alt={ele.snippet.thumbnails.default.url}></img>
 
                                 <div className="vid-footer d-flex justify-content-between my-2">
                                     <div className="disc">
                                         <h6 className='mt-2 mb-1 mx-1'>{ele.snippet.title}</h6>
                                         <p className='mx-1'>{ele.snippet.channelTitle}</p>
+                                        <Views vCount = {ele.snippet.viewCount} />
                                         {
-                                            view.items.map((ele) => {
-                                                return (
-                                                    <div className='d-flex justify-content-around'>
-                                                        <p><BsEyeFill className='mx-2' />{ele.statistics.viewCount}</p>
-                                                        {/* <p><FaThumbsUp className='mx-2' />{ele.statistics.likeCount}</p> */}
-                                                    </div>
-                                                )
-
-                                                // return <p><BsEyeFill className='mx-2' />{ele.statistics.viewCount}</p>
-                                                // return <p><BsEyeFill className='mx-2' />{ele.statistics.viewCount}</p>
-                                            })
+                                         
                                         }
                                     </div>
                                     <div className="drop-down">
