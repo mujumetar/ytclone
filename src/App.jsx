@@ -8,7 +8,7 @@ import Navbar from "./components/Navbar";
 import { useSelector } from 'react-redux';
 import Login from './pages/Login';
 // import { authReducer } from './features/authSlice';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+// import { Routes, Route } from "react-router-dom";
 
 function App() {
   let auth = useSelector(state => state.auth.auth)
@@ -17,10 +17,10 @@ function App() {
       {/* {auth && <Navbar />} */}
       {/* {!auth && <Login />} */}
 
-
-      <Routes>
-        <Route path='/' element={<Login />} />
-      </Routes>
+<Login />
+      {/* <Routes>
+        <Route path='/' element={} />
+      </Routes> */}
       <Canvas/>
       {/* <Navbar /> */}
 
