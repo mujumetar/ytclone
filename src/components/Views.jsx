@@ -9,17 +9,17 @@ useEffect(()=>{
     if(vCount/100000000 >= 1)
     {
         let n = vCount/100000000
-        setV(`${n.toFixed(1)} B`)
+        setV(`${n.toFixed(1)}B`)
     }
     else if(vCount / 1000000 >= 1)
     {
         let n = vCount/ 1000000
-        setV(`${n.toFixed(1)} M`)
+        setV(`${n.toFixed(1)}M`)
     }
     else if(vCount /1000 >=1)
         {
             let n = vCount/1000
-        setV(`${n.toFixed(1)} K`)
+        setV(`${n.toFixed(1)}K`)
     }
     else{
         setV(`${vCount} `)
@@ -27,7 +27,7 @@ useEffect(()=>{
 }, [vCount])
 
   return (
-    <div>{v}</div>
+    <div className='m-0 p-0 text-secondary fs-0'>{v} views</div>
   )
 }
 
