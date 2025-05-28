@@ -35,23 +35,32 @@
   -o-border-radius: 10px;
 }
 
-.bg-yt{
-    background-color: #0f0f0f;
+.bg-yt {
+  background-color: #0f0f0f;
 }
 
 /* .offcanvas {
   width: 15% !important;
 } */
 
+.name-sign {
+  display: none;
+}
+
 @media (min-width: 425px) {
   .offcanvas {
     width: 100% !important;
   }
+
 }
 
 @media (min-width: 768px) {
   .offcanvas {
     width: 40% !important;
+  }
+
+  .name-sign {
+    display: block;
   }
 }
 
@@ -59,10 +68,13 @@
   .offcanvas {
     width: 30% !important;
   }
+
 }
 
 @media (min-width: 1024px) {
   .offcanvas {
     width: 15% !important;
   }
+
+
 }

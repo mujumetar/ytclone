@@ -38,18 +38,18 @@ const Canvas = () => {
 
   return (
     <>
-      <nav className="navbar navbar-dark fixed-top py-2">
+      <nav className="navbar navbar-dark fixed-top py-2 d-flex justify-content-center align-content-center">
         <div className="container-fluid d-flex justify-content-lg-start">
-          <div className="navb d-flex flex-wrap justify-content-between w-100 my-2">
+          <div className="navb d-flex flex-wrap justify-content-between w-100 ">
             <div className="left">
               <button
-                className="navbar-toggler"
-                type="button btn btn-ptimary btn-pill"
+                className="navbar-toggler border-0 btn btn-sm"
+                type="button btn btn-pill"
                 data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasScrolling"
                 aria-controls="offcanvasScrolling"
               >
-                <span className="navbar-toggler-icon"></span>
+                <span className="navbar-toggler-icon btn btn-sm my-1 btn-pill"></span>
               </button>
               <a className="navbar-brand mx-3">
                 <img
@@ -61,22 +61,7 @@ const Canvas = () => {
               </a>
             </div>
 
-            <div className="d-flex flex-wrap" role="search">
-              <input
-                style={{ height: "40px" }}
-                className=" text-white bg-dark  border border-secondary rounded-start-pill px-4 border-end-0  text-white border"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button
-                className="btn text-white  bg-transparent rounded-end-pill"
-                type="submit"
-                style={{ height: "40px" }}
-              >
-                <RiSearch2Line />
-              </button>
-            </div>
+        
             <div className="d-flex mt-3 text-white" role="search">
 
               <RiMore2Fill />
@@ -87,12 +72,12 @@ const Canvas = () => {
                   !authUser ?
                     //  onClick={login}
                     <div className="rounded-pill border" >
-                      <BiUserCircle /> Sign In
+                      <BiUserCircle /><p className="name-sign">Sign In</p> 
                     </div>
                     :
                     <div className="rounded-pill border py-1 px-2 d-flex justify-content-center align-content-center">
                       <img src={authUser?.img} onClick={logout} className="rounded-circle" style={{ width: "30px" }} alt="" />
-                      <p className="my-auto">{authUser?.name}</p>
+                      <p className="my-auto ">{authUser?.name}</p>
                     </div>
                 }
 
