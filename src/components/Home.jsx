@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 // import { vid, view } from './data'
+
 import {
   RiDownload2Fill,
   RiDownloadLine,
@@ -21,7 +22,7 @@ let key = import.meta.env.VITE_YOUTUBE_KEY4;
 
 const Home = () => {
   const [data, setData] = useState([]);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(2);
   const [pageToken, setPageToken] = useState("");
 
   let base = "https://www.googleapis.com/youtube/v3/";
@@ -45,8 +46,8 @@ const Home = () => {
       ); // view request
       const viewCount = await veiwRes.json();
       // console.log(viewCount);
-      // const durations = viewCount.items?.map((ele) => ele.snippet.contentDetails);
-      // console.log(durations)
+      const durations = viewCount.items?.map((ele) => ele.contentDetails);
+      //   console.log(durations)
 
       const chanids = newdata.items?.map((ele) => ele.snippet.channelId);
       //   console.log(chanids)
@@ -58,9 +59,14 @@ const Home = () => {
       );
       const newimg = await img_url.json();
 
-      // var duration = vidIds;
-      // var humans = duration(/(^PT|S$)/g, "").split(/[^\d]/).map((item) => item.length < 2 ? "0" + item : item).join(":").replace(/^0/, "");
-      // console.log(humans);
+      //   var duration = durations;
+      //   var humans = duration
+      //     .replace(/(^PT|S$)/g, "")
+      //     .split(/[^\d]/)
+      //     .map((item) => (item.length < 2 ? "0" + item : item))
+      //     .join(":")
+      //     .replace(/^0/, "");
+      //   console.log(humans);
 
       const updateData = newdata.items?.map((ele) => {
         const view = viewCount.items.find((el) => ele.id.videoId == el.id);
@@ -87,16 +93,18 @@ const Home = () => {
   };
 
   useEffect(() => {
-
-      fetchData();
+    fetchData();
   }, []);
 
   return (
     <div>
-        <div className="my-4"></div>
-        <div className="my-2"></div>
-        <div className="my-4 py-2">.</div>
-      <div className="d-flex flex-wrap my-5 justify-content-center" role="search">
+      <div className="my-4"></div>
+      <div className="my-2"></div>
+      <div className="my-4 py-2">.</div>
+      <div
+        className="d-flex flex-wrap my-5 justify-content-center"
+        role="search"
+      >
         <input
           style={{ height: "40px" }}
           className=" text-white border bg-dark search border border-secondary rounded-pill px-4 border-end-0  text-white"
@@ -116,14 +124,18 @@ const Home = () => {
         <div className="row gap-y-1.5">
           {data.map((ele) => (
             <div className="col-lg-3 col-md-6 col-sm-12 " key={ele.id.videoId}>
-              {/* <iframe width={`{ele.snippet.thumbnails.high.width}px`} height={`{ele.snippet.thumbnails.high.height}px`} className='rounded-4' allowFullScreen src={`https://www.youtube.com/embed/${ele.id.videoId}`}></iframe> */}
-              <img
-                className=" img-fluid rounded-3"
-                width={`{ele.snippet.thumbnails.high.width} + %`}
-                height={`{ele.snippet.thumbnails.high.height} + %`}
-                src={`${ele.snippet.thumbnails.high.url}`}
-                alt={ele.snippet.thumbnails.default.url}
-              ></img>
+              <div className="thumb position-relative">
+                <img
+                  className=" img-fluid rounded-3"
+                  width={`{ele.snippet.thumbnails.high.width} + %`}
+                  height={`{ele.snippet.thumbnails.high.height} + %`}
+                  src={`${ele.snippet.thumbnails.high.url}`}
+                  alt={ele.snippet.thumbnails.default.url}
+                ></img>
+                <p className="bg-black bg-gradient w-auto text-white position-absolute bottom-0 end-0 translate-middle-x p-1 rounded rounded-5">
+                  {ele.snippet.contentDetails.duration}
+                </p>
+              </div>
 
               <div className="vid-footer d-flex justify-content-between my-2">
                 <div className="main-desc">
