@@ -17,6 +17,10 @@
   /* color: blueviolet; */
 }
 
+.sign-icon{
+font-size: 30px;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   color: #353535;

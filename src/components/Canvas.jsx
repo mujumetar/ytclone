@@ -71,8 +71,8 @@ const Canvas = () => {
                 {
                   !authUser ?
                     //  onClick={login}
-                    <div className="rounded-pill border" >
-                      <BiUserCircle /><p className="name-sign">Sign In</p> 
+                    <div className="rounded-pill border d-flex justify-content-center align-content-center my-auto" >
+                      <BiUserCircle className="sign-icon"/><span className="name-sign mx-2 ">Sign In</span> 
                     </div>
                     :
                     <div className="rounded-pill border py-1 px-2 d-flex justify-content-center align-content-center">
