@@ -16,6 +16,7 @@ import Views from "./Views";
 // let key = import.meta.env.VITE_YOUTUBE_KEY
 // let key = import.meta.env.VITE_YOUTUBE_KEY2;
 // let key = import.meta.env.VITE_YOUTUBE_KEY3;
+let key = import.meta.env.VITE_YOUTUBE_KEY4;
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -24,10 +25,10 @@ const Home = () => {
 
     let base = "https://www.googleapis.com/youtube/v3/";
     const fetchData = async () => {
-        // `${base}search/key=${key}&part=snippett&type=video&videoDuration=medium&maxResults=${limit}&q=marvel`)
+        // `${base}search/key=${key}&part=snippett&type=video&videoDuration=medium&maxResults=${limit}&q=dhasa`)
         try {
             const res = await fetch(
-                `${base}search?key=${key}&part=snippet&type=video&videoDuration=medium&maxResults=${limit}&q=marvel`
+                `${base}search?key=${key}&part=snippet&type=video&videoDuration=medium&maxResults=${limit}&q=dhasa`
             );
             // video details
             const newdata = await res.json();
@@ -41,8 +42,8 @@ const Home = () => {
             ); // view request
             const viewCount = await veiwRes.json();
             // console.log(viewCount);
-            const durations = viewCount.items?.map((ele) => ele.snippet.contentDetails.duration);
-            console.log(durations)
+            // const durations = viewCount.items?.map((ele) => ele.snippet.contentDetails);
+            // console.log(durations)
 
             const chanids = newdata.items?.map((ele) => ele.snippet.channelId);
             //   console.log(chanids)
