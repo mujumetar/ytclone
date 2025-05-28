@@ -13,9 +13,9 @@ import { BsEyeFill } from "react-icons/bs";
 import { FaThumbsUp } from "react-icons/fa";
 import Views from "./Views";
 
-// let key = import.meta.env.VITE_YOUTUBE_KEY
+let key = import.meta.env.VITE_YOUTUBE_KEY
 // let key = import.meta.env.VITE_YOUTUBE_KEY2;
-let key = import.meta.env.VITE_YOUTUBE_KEY3;
+// let key = import.meta.env.VITE_YOUTUBE_KEY3;
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -29,7 +29,8 @@ const Home = () => {
     try {
       const res = await fetch(
         `${base}search?key=${key}&part=snippet&type=video&videoDuration=medium&maxResults=${limit}&q=marvel`
-      ); // video details
+      );
+      // video details
       const newdata = await res.json();
       // console.log(newdata)
 
@@ -45,14 +46,14 @@ const Home = () => {
       //   console.log(chanids)
 
       const img_url = await fetch(
-        `https://www.googleapis.com/youtube/v3/channels?part=snippet&id=${chanids.join(
+        `${base}channels?part=snippet&id=${chanids.join(
           ","
         )}&thumbnails&key=${key}`
       );
       const newimg = await img_url.json();
 
       const durations = await fetch(
-        `${base}videos?id=${vidIds}&part=contentDetails&key=${key}`
+        `${base}videos?id=${vidIds.join(",")}&part=contentDetails&key=${key}`
       );
       const dur_data = await durations.json();
       // console.log(vidIds)
