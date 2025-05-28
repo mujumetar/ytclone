@@ -27,8 +27,14 @@ import {
 import { RiMenu3Fill } from "react-icons/ri";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Canvas = () => {
+
+
+  const authUser = useSelector((store) => store.auth.auth)
+
   return (
     <>
       <nav className="navbar navbar-dark fixed-top">
@@ -74,10 +80,21 @@ const Canvas = () => {
 
               <RiMore2Fill />
 
-              <a href="#" className="text-white text-decoration-none">
-                <div className="rounded-pill border py-1 px-2">
-                  <BiUserCircle /> Sign In
-                </div>
+              <a className="text-white text-decoration-none">
+
+                {
+                  !authUser ?
+                    <div className="rounded-pill border py-1 px-2">
+                      <BiUserCircle /> Sign In
+                    </div>
+
+                    :
+                    <div className="rounded-pill border py-1 px-2">
+                      <img src={authUser?.img} className="rounded-circle" style={{ witdh: "50px" }} alt="" />
+                      <p>{authUser?.name}</p>
+                    </div>
+                }
+
               </a>
             </div>
           </div>
@@ -108,9 +125,9 @@ const Canvas = () => {
               <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <RiHome4Fill className="my-2 mx-2 yt-icons" />
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <Link to='/home' className="nav-link active" >
                     Home
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <SiYoutubeshorts className="my-2 mx-2 yt-icons" />

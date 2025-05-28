@@ -13,12 +13,15 @@ import { useEffect } from "react";
 
 import { useDispatch } from "react-redux";
 import { login, logout } from "../features/authSlice";
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider(app);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate()
 
   const handleGoogles = async () => {
     let res = await signInWithPopup(auth, provider);
@@ -28,7 +31,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    setPersistence(auth, browserLocalPersistence);
+    // setPersistence(auth, browserLocalPersistence);
     onAuthStateChanged(auth, (user) => {
       if (user) {
         dispatch(
@@ -38,9 +41,11 @@ const Login = () => {
             img: user.photoURL,
           })
         );
+        console.log(user.displayName)
       } else {
         dispatch(logout());
       }
+      navigate('/home')
     });
   }, [auth]);
   return (

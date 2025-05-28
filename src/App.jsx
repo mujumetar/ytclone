@@ -9,24 +9,29 @@ import { useSelector } from 'react-redux';
 import Login from './pages/Login';
 import Shorts from './pages/Shorts';
 // import { authReducer } from './features/authSlice';
-// import { Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  let auth = useSelector(state => state.auth.auth)
+
+
+  let authUser = useSelector(store => store.auth.auth)
+
+  console.log(authUser)
+
   return (
     <>
       {/* {auth && <Navbar />} */}
       {/* {!auth && <Login />} */}
 
-<Login />
-      {/* <Routes>
-        <Route path='/' element={} />
-      </Routes> */}
-      <Canvas/>
-      {/* <Navbar /> */}
 
-      <Home />
-      <Shorts/>
+      <Routes>
+        <Route path='/' element={<Login />} />
+        <Route path='/home' element={<Home />} />
+
+      </Routes>
+      <Canvas />
+      {/* <Navbar /> */}
+      <Shorts />
       {/* <Videos/> */}
     </>
   )
