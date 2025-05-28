@@ -16,7 +16,7 @@ function App() {
 
   let authUser = useSelector(store => store.auth.auth)
 
-  console.log(authUser)
+  // console.log(authUser)
 
   return (
     <>
@@ -25,13 +25,14 @@ function App() {
 
 
       <Routes>
-        <Route path='/' element={<Login />} />
+        <Route path='/' element={ !authUser &&<Login />} />
         <Route path='/home' element={<Home />} />
+        <Route path='/shorts' element={<Shorts />} />
 
       </Routes>
       <Canvas />
       {/* <Navbar /> */}
-      <Shorts />
+
       {/* <Videos/> */}
     </>
   )

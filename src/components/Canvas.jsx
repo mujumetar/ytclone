@@ -29,6 +29,7 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { logout, login } from "../features/authSlice";
 
 const Canvas = () => {
 
@@ -37,7 +38,7 @@ const Canvas = () => {
 
   return (
     <>
-      <nav className="navbar navbar-dark fixed-top">
+      <nav className="navbar navbar-dark fixed-top py-2">
         <div className="container-fluid d-flex justify-content-lg-start">
           <div className="navb d-flex flex-wrap justify-content-between w-100 my-2">
             <div className="left">
@@ -80,18 +81,18 @@ const Canvas = () => {
 
               <RiMore2Fill />
 
-              <a className="text-white text-decoration-none">
+              <a className="text-white text-decoration-none my-auto ">
 
                 {
                   !authUser ?
-                    <div className="rounded-pill border py-1 px-2">
+                    //  onClick={login}
+                    <div className="rounded-pill border" >
                       <BiUserCircle /> Sign In
                     </div>
-
                     :
-                    <div className="rounded-pill border py-1 px-2">
-                      <img src={authUser?.img} className="rounded-circle" style={{ witdh: "50px" }} alt="" />
-                      <p>{authUser?.name}</p>
+                    <div className="rounded-pill border py-1 px-2 d-flex justify-content-center align-content-center">
+                      <img src={authUser?.img} onClick={logout} className="rounded-circle" style={{ width: "30px" }} alt="" />
+                      <p className="my-auto">{authUser?.name}</p>
                     </div>
                 }
 
@@ -131,9 +132,9 @@ const Canvas = () => {
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <SiYoutubeshorts className="my-2 mx-2 yt-icons" />
-                  <a className="nav-link active" aria-current="page" href="#">
+                  <Link to='/shorts' className="nav-link active">
                     Shorts
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item d-flex justify-content-start align-content-center my-1">
                   <MdSubscriptions className="my-2 mx-2 yt-icons" />

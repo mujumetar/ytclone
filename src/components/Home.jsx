@@ -14,8 +14,8 @@ import { FaThumbsUp } from "react-icons/fa";
 import Views from "./Views";
 
 // let key = import.meta.env.VITE_YOUTUBE_KEY
-let key = import.meta.env.VITE_YOUTUBE_KEY2;
-// let key = import.meta.env.VITE_YOUTUBE_KEY3;
+// let key = import.meta.env.VITE_YOUTUBE_KEY2;
+let key = import.meta.env.VITE_YOUTUBE_KEY3;
 
 const Home = () => {
     const [data, setData] = useState([]);
