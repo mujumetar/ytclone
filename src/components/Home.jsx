@@ -132,7 +132,7 @@ const Home = () => {
                   src={`${ele.snippet.thumbnails.high.url}`}
                   alt={ele.snippet.thumbnails.default.url}
                 ></img>
-                <p className="bg-black bg-gradient w-auto text-white position-absolute bottom-0 end-0 translate-middle-x p-1 rounded rounded-5">
+                <p className="bg-black bg-gradient w-auto text-white position-absolute bottom-0 end-0 mx-2 mb-2 p-1 rounded rounded-5">
                   {ele.snippet.contentDetails.duration}
                 </p>
               </div>
