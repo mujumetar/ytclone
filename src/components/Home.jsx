@@ -15,7 +15,7 @@ import Views from "./Views";
 
 // let key = import.meta.env.VITE_YOUTUBE_KEY
 // let key = import.meta.env.VITE_YOUTUBE_KEY2;
-let key = import.meta.env.VITE_YOUTUBE_KEY3;
+// let key = import.meta.env.VITE_YOUTUBE_KEY3;
 
 const Home = () => {
     const [data, setData] = useState([]);
@@ -37,9 +37,12 @@ const Home = () => {
             // console.log(vidIds)
 
             const veiwRes = await fetch(
-                `${base}videos?key=${key}&part=statistics&id=${vidIds.join(",")}`
+                `${base}videos?key=${key}&part=statistics,contentDetails&id=${vidIds.join(",")}`
             ); // view request
             const viewCount = await veiwRes.json();
+            // console.log(viewCount);
+            const durations = viewCount.items?.map((ele) => ele.snippet.contentDetails.duration);
+            console.log(durations)
 
             const chanids = newdata.items?.map((ele) => ele.snippet.channelId);
             //   console.log(chanids)
@@ -65,13 +68,9 @@ const Home = () => {
 
 
 
-            
 
-            // const durations = await fetch(
-            //     `${base}videos?id=${vidIds.join(",")}&part=contentDetails&key=${key}`
-            // );
-            // const dur_data = await durations.json();
-            // console.log(dur_data);
+
+
 
 
             // var duration = vidIds;
@@ -96,6 +95,7 @@ const Home = () => {
                 const view = viewCount.items.find((el) => ele.id.videoId == el.id);
                 if (view) {
                     ele.snippet.viewCount = view.statistics.viewCount;
+                    ele.snippet.contentDetails = view.contentDetails;
                 }
                 const channelimg = newimg.items?.find(
                     (el) => ele.snippet.channelId == el.id
@@ -104,11 +104,13 @@ const Home = () => {
                     ele.snippet.chanImg = channelimg.snippet.thumbnails;
                 }
 
-                // const dur_data = dur_data.items?.map((el) => ele.id.videoId == el.id)
+
+
+
 
                 return ele;
             });
-            // console.log(newdata);
+            console.log(updateData);
             setData(updateData);
 
             // console.log(updateData);
