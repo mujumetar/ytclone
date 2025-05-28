@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 // import Videos from './components/Videos';
 import { useSelector } from 'react-redux';
 import Login from './pages/Login';
+import Shorts from './pages/Shorts';
 // import { authReducer } from './features/authSlice';
 // import { Routes, Route } from "react-router-dom";
 
@@ -25,6 +26,7 @@ function App() {
       {/* <Navbar /> */}
 
       <Home />
+      <Shorts/>
       {/* <Videos/> */}
     </>
   )
