@@ -22,7 +22,7 @@ let key = import.meta.env.VITE_YOUTUBE_KEY4;
 
 const Home = () => {
   const [data, setData] = useState([]);
-  const [limit, setLimit] = useState(2);
+  const [limit, setLimit] = useState(200);
   const [pageToken, setPageToken] = useState("");
 
   let base = "https://www.googleapis.com/youtube/v3/";
